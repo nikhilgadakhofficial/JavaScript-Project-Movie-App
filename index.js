@@ -72,7 +72,9 @@ from.addEventListener("submit", (e) => {
   const movieName = box.value.trim();
   if (movieName !== "") {
     getAllUser(movieName);
-  } else {
+  }
+ 
+   else {
     alert("Please Enter Movie Nmae");
   }
 });
