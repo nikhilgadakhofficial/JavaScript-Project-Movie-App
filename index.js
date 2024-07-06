@@ -5,16 +5,19 @@ const div = document.createElement("div");
 async function getAllUser(movie) {
   try {
     const apikey = "68fbf626";
-    const url = `https://www.omdbapi.com/?i=tt3896198&apikey=${apikey}&t=${movie}`;
+    const url = `https://www.omdbapi.com/?i=tt3896198&apikey=${apikey}&t=${
+      movie || "Tiger 3"
+    }`;
 
     const response = await fetch(url);
 
     const data = await response.json();
-   // console.log(data);
+    console.log(data);
     const newsData = data;
 
     const {
       Title,
+      Awards,
       Director,
       imdbRating,
       Released,
@@ -54,7 +57,7 @@ async function getAllUser(movie) {
 
          <p class="p">Released Date : <span class="s">${Released}</span> </p>
 
-         <p  class="p">Awards: <span class="s">${Actors}</span></p>
+         <p  class="p">Awards: <span class="s">${Awards}</span></p>
 
          <p  class="p">Cast : <span class="s">${Actors}</span></p>
 
@@ -72,9 +75,7 @@ from.addEventListener("submit", (e) => {
   const movieName = box.value.trim();
   if (movieName !== "") {
     getAllUser(movieName);
-  }
- 
-   else {
+  } else {
     alert("Please Enter Movie Nmae");
   }
 });
